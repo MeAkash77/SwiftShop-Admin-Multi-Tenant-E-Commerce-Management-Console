@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500&family=Syne:wght@600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Marketplace tokens (white / charcoal / forest green) */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+
+  --color-cx-ink: #15231c;
+  --color-cx-muted: #5f6f66;
+  --color-cx-paper: #f3f5f2;
+  --color-cx-surface: #ffffff;
+  --color-cx-line: #d8ddd8;
+  --color-cx-accent: #0f6b4c;
+  --color-cx-accent-deep: #0a4f38;
+  --color-cx-accent-soft: #e8f3ee;
+  --color-cx-danger: #b42318;
+  --color-cx-warning: #b54708;
+
+  /* Remap legacy fk-* tokens → marketplace palette (keeps shop class names working) */
+  --color-fk-blue: #0f6b4c;
+  --color-fk-blue-dark: #0a4f38;
+  --color-fk-orange: #0f6b4c;
+  --color-fk-orange-hover: #0a4f38;
+  --color-fk-yellow: #0f6b4c;
+  --color-fk-yellow-accent: #86efac;
+  --color-fk-bg: #f3f5f2;
+  --color-fk-text: #15231c;
+  --color-fk-muted: #5f6f66;
+  --color-fk-green: #0f6b4c;
+  --color-fk-border: #d8ddd8;
+  --color-fk-footer: #15231c;
+  --color-fk-aside-text: #d1e7dc;
+  --color-fk-perk-text: #e8f3ee;
+  --shadow-fk: 0 1px 2px rgba(21, 35, 28, 0.06);
+  --shadow-fk-lg: 0 8px 24px rgba(21, 35, 28, 0.08);
+}
+
+/* Panel theme synced to html/body while vendor (or other panels) are open */
+html[data-panel-theme="light"],
+html[data-panel-theme="light"] body {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  color-scheme: light;
+}
+
+html[data-panel-theme="dark"],
+html[data-panel-theme="dark"] body {
+  background-color: #0b1220;
+  color: #e2e8f0;
+  color-scheme: dark;
+}
+
+body[data-panel-theme="light"] {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+body[data-panel-theme="dark"] {
+  background-color: #0b1220;
+  color: #e2e8f0;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: inherit;
+  color: inherit;
+}
+
+/*
+  Use only the app's own password visibility controls.
+  Edge/IE can inject native reveal/clear buttons that overlap our custom eye.
+*/
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-caps-lock-indicator {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+}
+
+/* Shop + auth layers (no @reference back to this file) */
+@import "./styles/auth.css";
+@import "./styles/landing.css";
+@import "./styles/shop.css";
+@import "./styles/customer-engage.css";

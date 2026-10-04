@@ -1,0 +1,63 @@
+# MultiCommerce — API + Redis for crowd-scale browsing
+# Usage: docker compose up --build
+# Requires MONGODB_URL (Atlas or local mongo). See docs/10-SCALE-5000-USERS.md
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-3000}:3000"
+    environment:
+      PORT: "3000"
+      NODE_ENV: production
+      TRUST_PROXY: "1"
+      MONGODB_URL: ${MONGODB_URL}
+      REDIS_URL: redis://redis:6379
+      MONGO_MAX_POOL: ${MONGO_MAX_POOL:-20}
+      JWT_TOKEN_SECRET: ${JWT_TOKEN_SECRET:-change_me_access}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change_me_refresh}
+      JWT_ACCESS_EXPIRES: ${JWT_ACCESS_EXPIRES:-1h}
+      JWT_REFRESH_EXPIRES: ${JWT_REFRESH_EXPIRES:-30d}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:5173,https://multicommerce-web.vercel.app}
+      EMAIL_USER: ${EMAIL_USER:-}
+      EMAIL_PASS: ${EMAIL_PASS:-}
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY:-}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID:-}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET:-}
+      ADMIN_SETUP_SECRET: ${ADMIN_SETUP_SECRET:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+volumes:
+  redis_data:

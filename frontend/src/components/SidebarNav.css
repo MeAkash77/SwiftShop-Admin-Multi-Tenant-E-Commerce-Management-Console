@@ -1,0 +1,119 @@
+@reference "../index.css";
+
+@layer components {
+  .side-nav {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .side-nav-item,
+  .side-nav-group {
+    @apply flex flex-col gap-1;
+  }
+
+  .side-nav-link,
+  .side-nav-group-btn {
+    @apply box-border flex w-full cursor-pointer items-center gap-3 rounded-xl border-0 bg-transparent px-3.5 py-[11px] text-left font-[inherit] text-slate-300 no-underline transition-colors duration-200;
+  }
+
+  .side-nav-link:hover,
+  .side-nav-group-btn:hover,
+  .side-nav-link.active,
+  .side-nav-group.has-active > .side-nav-group-btn {
+    @apply bg-blue-600/20 text-white;
+  }
+
+  /* Fixed icon column — FA glyph centered with absolute translate */
+  .side-nav-ico {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .side-nav-ico > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1;
+    width: auto;
+    height: auto;
+  }
+
+  .side-nav-ico > i::before {
+    line-height: 1;
+  }
+
+  .side-nav-link span,
+  .side-nav-group-btn span {
+    @apply min-w-0 flex-1 leading-snug;
+  }
+
+  .side-nav-chevron {
+    @apply ml-auto shrink-0 text-[0.7rem] opacity-75;
+    line-height: 1;
+  }
+
+  .side-nav-children {
+    @apply ml-3 flex flex-col gap-0.5 border-l border-slate-400/20 py-0.5 pl-2.5;
+  }
+
+  .side-nav-children .side-nav-link {
+    @apply px-3 py-2 text-[0.92rem] text-slate-400;
+  }
+
+  .side-nav-children .side-nav-link:hover,
+  .side-nav-children .side-nav-link.active {
+    @apply bg-sky-400/15 text-slate-50;
+  }
+
+  .side-nav-badge {
+    @apply ml-auto rounded-full bg-cyan-500 px-2 py-0.5 text-[0.75rem] font-bold not-italic text-slate-900;
+  }
+
+  .panel-shell--light .side-nav-link,
+  .panel-shell--light .side-nav-group-btn {
+    @apply text-slate-600;
+  }
+
+  .panel-shell--light .side-nav-link:hover,
+  .panel-shell--light .side-nav-group-btn:hover,
+  .panel-shell--light .side-nav-link.active,
+  .panel-shell--light .side-nav-group.has-active > .side-nav-group-btn {
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  .panel-shell--light .side-nav-children {
+    @apply border-slate-200;
+  }
+
+  .panel-shell--light .side-nav-children .side-nav-link {
+    @apply text-slate-500;
+  }
+
+  .panel-shell--light .side-nav-children .side-nav-link:hover,
+  .panel-shell--light .side-nav-children .side-nav-link.active {
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  .vendor-workspace .side-nav-link:hover,
+  .vendor-workspace .side-nav-group-btn:hover,
+  .vendor-workspace .side-nav-link.active,
+  .vendor-workspace .side-nav-group.has-active > .side-nav-group-btn {
+    background: rgb(0 128 96 / 0.16);
+  }
+
+  .vendor-workspace.panel-shell--light .side-nav-link:hover,
+  .vendor-workspace.panel-shell--light .side-nav-group-btn:hover,
+  .vendor-workspace.panel-shell--light .side-nav-link.active,
+  .vendor-workspace.panel-shell--light .side-nav-group.has-active > .side-nav-group-btn,
+  .vendor-workspace.panel-shell--light .side-nav-children .side-nav-link:hover,
+  .vendor-workspace.panel-shell--light .side-nav-children .side-nav-link.active {
+    background: rgb(0 128 96 / 0.11);
+    color: #0f766e;
+  }
+}

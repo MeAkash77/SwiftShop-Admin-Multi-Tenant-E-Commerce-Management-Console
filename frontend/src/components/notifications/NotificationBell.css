@@ -1,0 +1,123 @@
+.notif-bell {
+  position: relative;
+}
+
+.notif-bell__btn {
+  position: relative;
+}
+
+.notif-bell__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #b42318;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.notif-bell__panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: min(360px, calc(100vw - 2rem));
+  background: var(--aw-surface, #fff);
+  border: 1px solid var(--aw-line, #e2e8f0);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgb(15 23 42 / 0.14);
+  z-index: 80;
+  overflow: hidden;
+}
+
+.panel-shell--dark .notif-bell__panel {
+  background: #1e293b;
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.notif-bell__head,
+.notif-bell__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--aw-line, #e2e8f0);
+}
+
+.notif-bell__foot {
+  border-bottom: 0;
+  border-top: 1px solid var(--aw-line, #e2e8f0);
+  justify-content: center;
+}
+
+.notif-bell__foot a,
+.notif-bell__link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--aw-accent-bright, #0f6b4c);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.notif-bell__list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.notif-bell__empty {
+  margin: 0;
+  padding: 1.25rem 0.9rem;
+  text-align: center;
+}
+
+.notif-bell__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--aw-line, #e2e8f0);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.notif-bell__item:last-child {
+  border-bottom: 0;
+}
+
+.notif-bell__item:hover {
+  background: var(--aw-soft, #f6f6f7);
+}
+
+.notif-bell__item.is-unread {
+  background: rgb(37 99 235 / 0.06);
+}
+
+.notif-bell__title {
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.notif-bell__body {
+  font-size: 0.8rem;
+  color: var(--aw-muted, #64748b);
+  line-height: 1.35;
+}
+
+.notif-bell__time {
+  font-size: 0.72rem;
+  color: var(--aw-muted, #64748b);
+}

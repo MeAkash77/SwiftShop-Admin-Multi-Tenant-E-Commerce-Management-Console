@@ -1,0 +1,70 @@
+@reference "../../index.css";
+
+@layer components {
+  .toast-viewport {
+    @apply pointer-events-none fixed top-5 right-5 z-[9999] flex w-[min(380px,calc(100vw-24px))] flex-col gap-2.5 max-sm:top-auto max-sm:right-3 max-sm:bottom-4 max-sm:left-3 max-sm:w-auto;
+  }
+
+  .app-toast {
+    @apply pointer-events-auto grid animate-[toast-in_0.28s_ease] grid-cols-[auto_1fr_auto] items-start gap-3 rounded-[14px] border border-slate-400/30 bg-slate-900/95 px-4 py-3.5 text-slate-200 shadow-[0_18px_40px_rgb(0_0_0/0.35)];
+  }
+
+  .app-toast > i:first-child {
+    @apply mt-0.5 text-[1.15rem];
+  }
+
+  .app-toast--success {
+    @apply border-green-500/45;
+  }
+
+  .app-toast--success > i:first-child {
+    @apply text-green-400;
+  }
+
+  .app-toast--error {
+    @apply border-red-400/50;
+  }
+
+  .app-toast--error > i:first-child {
+    @apply text-red-400;
+  }
+
+  .app-toast--warning {
+    @apply border-amber-400/50;
+  }
+
+  .app-toast--warning > i:first-child {
+    @apply text-amber-400;
+  }
+
+  .app-toast--info {
+    @apply border-sky-400/45;
+  }
+
+  .app-toast--info > i:first-child {
+    @apply text-sky-400;
+  }
+
+  .app-toast-body strong {
+    @apply mb-0.5 block text-[0.92rem];
+  }
+
+  .app-toast-body p {
+    @apply m-0 text-[0.88rem] leading-snug text-slate-300;
+  }
+
+  .app-toast-close {
+    @apply cursor-pointer border-0 bg-transparent px-1 py-0.5 text-slate-400 hover:text-white;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}

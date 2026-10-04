@@ -1,0 +1,46 @@
+name: Keep API warm
+
+# Ping production every 5 minutes so the first shopper after idle
+# does not pay a 2–3s Vercel/Mongo cold start.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: keep-api-warm
+  cancel-in-progress: true
+
+jobs:
+  warm:
+    name: Warm multicommerce-api
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Ping health (wake function + Mongo)
+        run: |
+          set -e
+          for i in 1 2 3; do
+            code=$(curl -sS -o /tmp/health.json -w "%{http_code}" \
+              --max-time 25 \
+              "https://multicommerce-api.vercel.app/health" || echo "000")
+            echo "attempt $i → HTTP $code"
+            cat /tmp/health.json || true
+            echo
+            if [ "$code" = "200" ]; then
+              break
+            fi
+            sleep 2
+          done
+
+      - name: Warm catalog + categories (fill memory/CDN cache)
+        run: |
+          set -e
+          curl -sS --max-time 25 -o /dev/null -w "products %{http_code} %{time_total}s\n" \
+            "https://multicommerce-api.vercel.app/api/product?status=active&page=1&limit=12&sort=newest"
+          curl -sS --max-time 25 -o /dev/null -w "categories %{http_code} %{time_total}s\n" \
+            "https://multicommerce-api.vercel.app/api/category"
+          # second hit should be memory/CDN hot
+          curl -sS --max-time 15 -o /dev/null -w "products-2 %{http_code} %{time_total}s\n" \
+            "https://multicommerce-api.vercel.app/api/product?status=active&page=1&limit=12&sort=newest"

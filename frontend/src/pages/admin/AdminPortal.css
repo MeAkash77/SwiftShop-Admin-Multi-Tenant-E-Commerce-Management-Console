@@ -1,0 +1,85 @@
+@reference "../../index.css";
+
+@layer components {
+  .admin-portal {
+    @apply grid min-h-screen place-items-center p-6;
+    font-family: Inter, system-ui, "Segoe UI", sans-serif;
+    color: #0f172a;
+    background:
+      radial-gradient(circle at 12% 0%, rgb(37 99 235 / 0.12), transparent 42%),
+      linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  }
+
+  .admin-portal-card {
+    @apply w-full max-w-[440px] rounded-xl border border-slate-200 bg-white p-8;
+    box-shadow: 0 12px 40px rgb(15 23 42 / 0.08);
+  }
+
+  .admin-portal-card.wide {
+    @apply max-w-[560px];
+  }
+
+  .admin-portal-eyebrow {
+    @apply mb-2 mt-0 text-xs font-semibold uppercase tracking-[0.08em] text-blue-700;
+  }
+
+  .admin-portal-card h1 {
+    @apply mb-2 mt-0 text-[1.75rem] text-slate-900;
+  }
+
+  .admin-portal-lead {
+    @apply mb-[22px] mt-0 text-[0.95rem] leading-normal text-slate-500;
+  }
+
+  .admin-portal-lead code {
+    @apply text-[0.85em] text-blue-700;
+  }
+
+  .admin-portal-banner {
+    @apply mb-[18px] rounded-lg border border-blue-200 bg-blue-50 px-3.5 py-3 text-sm text-blue-900;
+  }
+
+  .admin-portal-banner a {
+    @apply font-semibold text-blue-700;
+  }
+
+  .admin-portal-form {
+    @apply flex flex-col gap-2;
+  }
+
+  .admin-portal-form label {
+    @apply mt-1.5 text-[0.85rem] font-medium text-slate-600;
+  }
+
+  .admin-portal-form input {
+    @apply box-border w-full rounded-lg border border-slate-300 bg-white px-3 py-[11px] text-slate-900 focus:border-blue-500 focus:outline-2 focus:outline-blue-500/25;
+  }
+
+  .admin-portal-form button {
+    @apply mt-4 cursor-pointer rounded-lg border-0 bg-slate-800 px-4 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-65;
+  }
+
+  .admin-portal-form button:hover:not(:disabled) {
+    background: #1e3a5f;
+  }
+
+  .admin-portal-forgot {
+    @apply mb-0 mt-1 text-right text-[0.88rem];
+  }
+
+  .admin-portal-forgot a {
+    @apply text-blue-700 no-underline hover:underline;
+  }
+
+  .admin-portal-row {
+    @apply grid grid-cols-2 gap-3 max-[520px]:grid-cols-1;
+  }
+
+  .admin-portal-footer {
+    @apply mb-0 mt-5 text-center text-sm text-slate-500;
+  }
+
+  .admin-portal-footer a {
+    @apply text-blue-700;
+  }
+}

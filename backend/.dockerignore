@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log*
+.env
+.env.*
+!.env.example
+.vercel
+.git
+coverage
+tests
+scripts
+*.md

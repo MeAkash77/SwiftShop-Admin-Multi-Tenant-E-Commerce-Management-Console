@@ -1,0 +1,104 @@
+@reference "../../index.css";
+
+@layer components {
+  /* Shopify-plain seller login / register */
+  .vendor-portal {
+    @apply grid min-h-screen place-items-center p-6 text-[#202223];
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f1f2f4;
+  }
+
+  .vendor-portal-card {
+    @apply w-full max-w-[440px] rounded-lg border border-[#e1e3e5] bg-white p-8;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.04);
+  }
+
+  .vendor-portal-card.wide {
+    @apply max-w-[560px];
+  }
+
+  .vendor-portal-eyebrow {
+    @apply mb-2 mt-0 text-xs font-semibold uppercase tracking-[0.06em] text-[#008060];
+  }
+
+  .vendor-portal-card h1 {
+    @apply mb-2 mt-0 text-[1.5rem] font-semibold text-[#202223];
+  }
+
+  .vendor-portal-lead {
+    @apply mb-[22px] mt-0 text-[0.95rem] leading-normal text-[#6d7175];
+  }
+
+  .vendor-portal-form {
+    @apply flex flex-col gap-2;
+  }
+
+  .vendor-portal-form label {
+    @apply mt-1.5 text-[0.85rem] font-medium text-[#202223];
+  }
+
+  .vendor-portal-form input {
+    @apply box-border w-full rounded-lg border border-[#c9cccf] bg-white px-3 py-[11px] text-[#202223] focus:border-[#008060] focus:outline-2 focus:outline-[#008060]/30;
+  }
+
+  .vendor-portal-form button {
+    @apply mt-4 cursor-pointer rounded-lg border-0 bg-[#008060] px-4 py-3 font-semibold text-white hover:bg-[#004c3f] disabled:cursor-not-allowed disabled:opacity-65;
+  }
+
+  .vendor-portal-forgot {
+    @apply mb-0 mt-1 text-right text-[0.88rem];
+  }
+
+  .vendor-portal-forgot a {
+    @apply text-[#008060] no-underline hover:underline;
+  }
+
+  .vendor-portal-row {
+    @apply grid grid-cols-2 gap-3 max-[520px]:grid-cols-1;
+  }
+
+  .vendor-portal-footer {
+    @apply mb-0 mt-5 text-center text-sm leading-relaxed text-[#6d7175];
+  }
+
+  .vendor-portal-footer a {
+    @apply font-medium text-[#008060];
+  }
+
+  .vendor-portal-check {
+    @apply mt-3 flex items-start gap-2.5 text-[0.88rem] font-normal leading-snug text-[#202223];
+  }
+
+  .vendor-portal-check input {
+    @apply mt-0.5 h-4 w-4 shrink-0 accent-[#008060];
+  }
+
+  .vendor-portal-check a {
+    @apply font-semibold text-[#008060] underline-offset-2 hover:underline;
+  }
+
+  .vendor-portal--terms {
+    @apply items-start py-10;
+  }
+
+  .vendor-portal-terms-card {
+    @apply max-w-[720px];
+  }
+
+  .vendor-public-terms h2 {
+    @apply mb-2 mt-5 text-[1.05rem] font-semibold text-[#202223];
+  }
+
+  .vendor-public-terms h2:first-child {
+    @apply mt-0;
+  }
+
+  .vendor-public-terms p,
+  .vendor-public-terms li {
+    @apply text-[0.92rem] leading-relaxed text-[#6d7175];
+  }
+
+  .vendor-public-terms ul {
+    @apply mb-0 mt-2 pl-5;
+  }
+}
