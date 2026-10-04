@@ -8,9 +8,9 @@
 
 | | URL |
 |---|-----|
-| **Web App** | https://multicommerce-web.vercel.app |
-| **API** | https://multicommerce-api.vercel.app/api |
-| **Health** | https://multicommerce-api.vercel.app/health |
+| **Web App** | https://swift-shop-admin-multi-tenant-e-com.vercel.app |
+| **API** | https://swift-shop-admin-multi-tenant-e-com.vercel.app/api |
+| **Health** | https://swift-shop-admin-multi-tenant-e-com.vercel.app/health |
 
 | Role | Entry |
 |------|--------|
@@ -171,4 +171,4 @@ Full tables: [DOCUMENTATION.md](./DOCUMENTATION.md)
 
 ---
 
-*MultiCommerce* · Live: [multicommerce-web.vercel.app](https://multicommerce-web.vercel.app)
+*MultiCommerce* · Live: [https://swift-shop-admin-multi-tenant-e-com.vercel.app](https://swift-shop-admin-multi-tenant-e-com.vercel.app)
